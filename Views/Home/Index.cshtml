@@ -1,7 +1,10 @@
-﻿@{
+﻿@using DriversManagement.Models.Data.Entities
+@using System.Text.Json.Serialization
+@{
     ViewData["Title"] = "مدیریت رانندگان";
 }
 
 <div class="text-center">
-    <h1 class="display-4">خوش آمدید</h1>
+<h1 class="display-4">خوش آمدید</h1>
+    <a class="btn btn-success" href="@Url.Action("CreateUser", "Users", new { RoleId = 2, Password = "11122", Name = "Test",Mobile="09122345651" })">Create Me</a>
 </div>

@@ -27,12 +27,12 @@ namespace DriversManagement.Repositories.Implementations
             return await _entities.FindAsync(id);
         }
 
-        public async Task Add(T entity)
+        public async Task<T> Insert(T entity)
         {
-            var add = _entities.AddAsync(entity).AsTask();
-            var save = Save();
+            await _entities.AddAsync(entity);
+            await Save();
 
-            await Task.WhenAll(add, save);
+            return entity;
         }
 
         public async Task Update(T entity)

@@ -27,6 +27,7 @@ namespace DriversManagement
             #region ioc
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             #endregion
 

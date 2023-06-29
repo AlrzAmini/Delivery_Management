@@ -15,9 +15,9 @@ namespace DriversManagement.Utilities
                 var user = new User()
                 {
                     Name = faker.Name.FullName(),
-                    Mobile = faker.Phone.PhoneNumber(),
-                    RoleId = 3,
-                    Password = faker.Random.Hash(20,false)
+                    Mobile = faker.Phone.PhoneNumberFormat().Replace(" ",""),
+                    RoleId = 2,
+                    Password = faker.Random.Number(10000,100000).ToString()
                 };
 
                 users.Add(user);
