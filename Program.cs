@@ -1,4 +1,6 @@
 using DriversManagement.Models.Data.Context;
+using DriversManagement.Repositories.Implementations;
+using DriversManagement.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace DriversManagement
@@ -10,13 +12,23 @@ namespace DriversManagement
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            #region services
+
             builder.Services.AddControllersWithViews();
-            var a = builder.Configuration.GetConnectionString("DriversManagementDBConnection");
             builder.Services.AddDbContext<DriversManagementDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DriversManagementDBConnection"));
 
             });
+
+            #endregion
+
+            #region ioc
+
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            #endregion
 
             //builder.Services.AddScoped<ILoggerRepository, LogRepository>();
 
