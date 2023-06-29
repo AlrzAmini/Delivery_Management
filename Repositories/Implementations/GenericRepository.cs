@@ -16,7 +16,7 @@ namespace DriversManagement.Repositories.Implementations
             _entities = context.Set<T>();
         }
 
-        public async Task<List<T>> GetAll(int pageIndex, int pageSize)
+        public async Task<List<T>> GetAll(int pageIndex = 1, int pageSize = 10)
         {
             var skip = (pageIndex - 1) * pageSize;
             return await _entities.Skip(skip).Take(pageSize).ToListAsync();
