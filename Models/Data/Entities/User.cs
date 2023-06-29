@@ -16,7 +16,7 @@ namespace DriversManagement.Models.Data.Entities
 
         #region relations
 
-        public Role Role { get; set; }
+        public Role? Role { get; set; }
 
         #endregion
     }
