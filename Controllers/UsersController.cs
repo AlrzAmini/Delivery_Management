@@ -25,11 +25,11 @@ namespace DriversManagement.Controllers
 
         public IActionResult Index()
         {
-            return Ok("Users");
+            return View();
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateUser()
+        public IActionResult CreateUser()
         {
             return View();
         }

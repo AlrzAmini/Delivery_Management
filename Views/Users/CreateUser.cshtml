@@ -2,10 +2,27 @@
 @{
 
 }
-<div class="border border-info">
-    <div class="align-content-center">
+<div class="border border-light p-4 rounded bg-secondary">
+    <div class="align-content-center border border-light p-4 rounded bg-light">
         <form asp-controller="Users" asp-action="CreateUser" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label>Name:</label>
+                    <input asp-for="Name" class="form-control" placeholder="enter driver name"/>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label>Mobile:</label>
+                    <input asp-for="Mobile" class="form-control" placeholder="enter driver mobile" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label>Password:</label>
+                    <input asp-for="Password" class="form-control" placeholder="enter driver password" />
+                </div>
+            </div>
 
+            <button type="submit" class="btn btn-success">Create</button>
         </form>
     </div>
 </div>
