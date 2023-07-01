@@ -1,4 +1,6 @@
 ﻿using DriversManagement.Models.Data.Entities;
+using DriversManagement.Models.DTOs.User;
+using DriversManagement.Models.Global;
 using DriversManagement.Repositories.Interfaces;
 using DriversManagement.Validators;
 using FluentValidation.Results;
@@ -27,10 +29,16 @@ namespace DriversManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CreateUser(User user)
+        public async Task<IActionResult> CreateUser()
         {
-            UserValidator validator = new UserValidator();
-            ValidationResult results = await validator.ValidateAsync(user);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(CreateUserRequestDto userDto)
+        {
+            CreateUserValidator validator = new CreateUserValidator();
+            ValidationResult results = await validator.ValidateAsync(userDto);
 
             if (!results.IsValid)
             {
@@ -42,6 +50,14 @@ namespace DriversManagement.Controllers
 
                 return BadRequest(errors);
             }
+
+            var user = new User()
+            {
+                RoleId = StaticValues.AdminRoleId,
+                Name = userDto.Name,
+                Mobile = userDto.Mobile,
+                Password = userDto.Password
+            };
 
             var insertedUser = await _userGenericRepository.Insert(user);
             return Ok(insertedUser);

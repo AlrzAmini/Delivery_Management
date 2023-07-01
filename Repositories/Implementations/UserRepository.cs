@@ -14,6 +14,7 @@ namespace DriversManagement.Repositories.Implementations
             _context = context;
         }
 
+
         public async Task<List<User>> GetUsersByRoleId(int roleId, int pageIndex = 1, int pageSize = 10)
         {
             var skip = (pageIndex - 1) * pageSize;
