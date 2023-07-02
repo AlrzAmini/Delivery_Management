@@ -9,16 +9,19 @@
                 <div class="col-md-6 mb-2">
                     <label>Name:</label>
                     <input asp-for="Name" class="form-control" placeholder="enter driver name"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label>Mobile:</label>
                     <input asp-for="Mobile" class="form-control" placeholder="enter driver mobile" />
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-2">
                     <label>Password:</label>
                     <input asp-for="Password" class="form-control" placeholder="enter driver password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
 

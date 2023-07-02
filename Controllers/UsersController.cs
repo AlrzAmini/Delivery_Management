@@ -39,16 +39,10 @@ namespace DriversManagement.Controllers
         {
             CreateUserValidator validator = new CreateUserValidator();
             ValidationResult results = await validator.ValidateAsync(userDto);
-
+            
             if (!results.IsValid)
             {
-                var errors = new List<string>();
-                foreach (var failure in results.Errors)
-                {
-                    errors.Add("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
-                }
-
-                return BadRequest(errors);
+                return View(userDto);
             }
 
             var user = new User()
