@@ -1,0 +1,35 @@
+﻿@using DriversManagement.Utilities.ExtensionMethods
+@model List<DriversManagement.Models.Data.Entities.Shipment>
+<div class="mt-5">
+    @if (!Model.CollectionIsNullOrEmpty())
+    {
+        <div class="table table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Price</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var shipment in Model)
+                {
+                    <tr>
+                        <th>@shipment.Title</th>
+                        <td>@shipment.Weight</td>
+                        <td>@shipment.Price</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="col col-md-12 alert alert-info text-center">
+            Not any record founded
+        </div>
+    }
+</div>

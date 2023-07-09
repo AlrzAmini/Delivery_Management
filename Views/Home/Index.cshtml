@@ -2,7 +2,29 @@
 @{
     ViewData["Title"] = "مدیریت رانندگان";
 }
-
+@model bool
 <div class="text-center">
-    <h1 class="display-4">خوش آمدید</h1>
+    <h1 class="display-4">Welcome</h1>
+</div>
+<br/>
+<hr/>
+
+<div class="border border-light rounded mb-3">
+    <div class="row">
+        @if (Model)
+        {
+            <div class="col col-md-2">
+                <a class="btn btn-outline-success" asp-controller="Users" asp-action="Index">Users</a>
+            </div>
+            <div class="col col-md-2">
+                <a class="btn btn-outline-success" asp-controller="Shipments" asp-action="Index">Shipments</a>
+            </div>
+        }
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="col col-md-2">
+                <a class="btn btn-outline-success" asp-controller="Deliveries" asp-action="Index">Deliveries</a>
+            </div>
+        }
+    </div>
 </div>

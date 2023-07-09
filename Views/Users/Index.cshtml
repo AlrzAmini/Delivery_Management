@@ -1,5 +1,43 @@
-﻿@model List<DriversManagement.Models.Data.Entities.User>
+﻿@using DriversManagement.Utilities.ExtensionMethods
+@model List<DriversManagement.Models.DTOs.User.UserForAdminDto>
 
-<div>
+<div class="col col-md-4">
     <a class="btn btn-outline-success" asp-controller="Users" asp-action="CreateUser">Create new user</a>
+</div>
+<hr />
+<div class="mt-5">
+    @if (!Model.CollectionIsNullOrEmpty())
+    {
+        <div class="table table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Password</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <th>@user.Name</th>
+                            <td>@user.Mobile</td>
+                            <td>@user.Password</td>
+                            <th>
+                                <a class="btn btn-danger" asp-controller="Users" asp-action="DeleteUser" asp-route-userId="@user.UserId">delete</a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="col col-md-12 alert alert-info text-center">
+            Not any record founded
+        </div>
+    }
 </div>

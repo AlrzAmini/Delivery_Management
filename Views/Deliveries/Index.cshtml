@@ -1,0 +1,38 @@
+﻿@using DriversManagement.Utilities.ExtensionMethods
+@model List<DriversManagement.Controllers.DeliveryDto>
+
+
+<div class="mt-5">
+    @if (!Model.CollectionIsNullOrEmpty())
+    {
+        <div class="table table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Driver</th>
+                        <th scope="col">Shipment</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var delivery in Model)
+                    {
+                        <tr>
+                            <th>@delivery.DriverName</th>
+                            <td>@delivery.ShipmentTitle</td>
+                            <td>@delivery.Price</td>
+                            <td>@delivery.Address</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="col col-md-12 alert alert-info text-center">
+            Not any record founded
+        </div>
+    }
+</div>

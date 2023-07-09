@@ -15,5 +15,7 @@ public interface IGenericRepository<T> where T : BaseEntity
     public Task<bool> Delete(T entity);
     public Task<bool> DeleteById(int id);
 
+    public Task<bool> IsExists(int id);
+
     public Task Save();
 }

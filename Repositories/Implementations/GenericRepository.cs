@@ -59,6 +59,11 @@ namespace DriversManagement.Repositories.Implementations
             return await Delete(entity);
         }
 
+        public async Task<bool> IsExists(int id)
+        {
+            return await _entities.AnyAsync(e => e.Id == id);
+        }
+
         public async Task Save()
         {
             await _context.SaveChangesAsync();
