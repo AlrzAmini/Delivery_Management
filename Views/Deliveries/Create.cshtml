@@ -1,0 +1,43 @@
+﻿@{
+    var drivers = ViewBag.Drivers as List<SelectListItem>;
+    var cars = ViewBag.Cars as List<SelectListItem>;
+    var shipments = ViewBag.Shipments as List<SelectListItem>;
+}
+
+@model DriversManagement.Models.Data.Entities.Delivery
+
+<div class="border border-light p-4 rounded bg-secondary">
+    <div class="align-content-center border border-light p-4 rounded bg-light">
+        <form asp-controller="Deliveries" asp-action="Create" method="post">
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label>Price:</label>
+                    <input asp-for="Price" class="form-control" placeholder="delivery price" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label>Address:</label>
+                    <input asp-for="DestinationAddress" class="form-control" placeholder="distination address" />
+                    <span asp-validation-for="DestinationAddress" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label>Driver:</label>
+                    <select asp-for="DriverId" asp-items="drivers" class="form-control"></select>
+                    <span asp-validation-for="DriverId" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label>Car:</label>
+                    <select asp-for="CarId" asp-items="cars" class="form-control"></select>
+                    <span asp-validation-for="CarId" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label>Shipment:</label>
+                    <select asp-for="ShipmentId" asp-items="shipments" class="form-control"></select>
+                    <span asp-validation-for="ShipmentId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+</div>

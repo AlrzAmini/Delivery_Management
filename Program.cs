@@ -16,7 +16,10 @@ namespace DriversManagement
 
             #region services
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
             builder.Services.AddDbContext<DriversManagementDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DriversManagementDBConnection"));

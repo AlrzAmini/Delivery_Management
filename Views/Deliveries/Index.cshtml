@@ -1,7 +1,9 @@
 ﻿@using DriversManagement.Utilities.ExtensionMethods
 @model List<DriversManagement.Controllers.DeliveryDto>
 
-
+<div class="row col col-md-12">
+    <a class="btn btn-outline-success" asp-controller="Deliveries" asp-action="Create">Create</a>
+</div>
 <div class="mt-5">
     @if (!Model.CollectionIsNullOrEmpty())
     {
